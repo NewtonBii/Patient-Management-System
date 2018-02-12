@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'faith_pms.apps.FaithPmsConfig'
+    'faith_pms.apps.FaithPmsConfig',
+    'bootstrap3'
+
 ]
 
 MIDDLEWARE = [

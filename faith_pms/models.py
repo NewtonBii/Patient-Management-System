@@ -11,3 +11,6 @@ class Patient(models.Model):
     email = models.EmailField()
     nhif_number = models.IntegerField(default=0)
     blood_group = models.CharField(max_length=5)
+
+# class NextOfKin(models.Model):
+#     name = models.CharField

@@ -1,80 +1,99 @@
+{% extends 'base.html' %}
 {% block content %}
-<div class="wrapper">
-  <div class="wrapper_container">
-  <!-- start content -->
-    <div class="site-wrapper active" id="target">
-      <div class="site-wrapper_left-col">
-        <a href="#" class="logo">Logo</a>
-        <div class="left-nav">
-          <a href="#"><i class="fa fa-home"></i>Home</a>
-          <a href="#"><i class="fa fa-pie-chart"></i>Dashboard</a>
-          <a href="#" class="active"><i class="fa fa-user"></i>Profile</a>
-          <a href="#"><i class="fa fa-comment"></i>About</a>
-          <a href="#"><i class="fa fa-cog"></i>Settings</a>
+<div class="welcome">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="content">
+          <h2>Welcome to Dashboard</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
         </div>
       </div>
-      <div class="site-wrapper_top-bar">
-        <a href="#" id="toggle"><i class="fa fa-bars"></i></a>
-      </div>
-      <!-- inner content -->
-      <div class="row">
-        <div class="col-1">
-          <div class="user-item">
-            <div class="user-item_photo">
-              <img src="http://cs627618.vk.me/v627618825/c092/8fhljOvdiEs.jpg" alt="myphoto" />
-            </div>
-            <div class="user-item_info">
-              <p class="name">Stanislav Golts</p>
-              <p class="sub">Front-End developer</p>
-              <div class="controls">
-                <a href="#"><i class="fa fa-camera"></i></a>
-                <a href="#"><i class="fa fa-pencil"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-2">
-            <div class="chat">
-              <div class="head">
-                <i class="fa fa-comment"></i>
-                Message
-              </div>
-              <div class="chat_inner">
-                <div class="chat_inner-item">
-                  <div class="photo">
-                    <img src="http://cs627618.vk.me/v627618825/c092/8fhljOvdiEs.jpg" alt="myphoto" />
-                  </div>
-                  <div class="message">
-                    Hello, World!
-                  </div>
-                </div>
-                <div class="chat_inner-item right">
-                  <div class="message">
-                    Hello, World!
-                  </div>
-                  <div class="photo">
-                    <img src="http://cs627618.vk.me/v627618825/c092/8fhljOvdiEs.jpg" alt="myphoto" />
-                  </div>
-                </div>
-                <div class="chat_inner-item">
-                  <div class="photo">
-                    <img src="http://cs627618.vk.me/v627618825/c092/8fhljOvdiEs.jpg" alt="myphoto" />
-                  </div>
-                  <div class="message">
-                    Hello, World!
-                  </div>
-                </div>
-              </div>
-              <div class="footer">
-                <input type="text" placeholder="Your Message">
-                <button><i class="fa fa-paper-plane"></i></button>
-              </div>
-            </div>
-          </div>
-      </div>
-      <!-- end inner content -->
     </div>
-  <!-- end content -->
   </div>
 </div>
-{% endblock   %}
+<section class="statistics">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="box">
+          <i class="fa fa-envelope fa-fw bg-primary"></i>
+          <div class="info">
+            <h3>1,245</h3> <span>Emails</span>
+            <p>Lorem ipsum dolor sit amet</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="box">
+          <i class="fa fa-file fa-fw danger"></i>
+          <div class="info">
+            <h3>34</h3> <span>Projects</span>
+            <p>Lorem ipsum dolor sit amet</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="box">
+          <i class="fa fa-users fa-fw success"></i>
+          <div class="info">
+            <h3>5,245</h3> <span>Users</span>
+            <p>Lorem ipsum dolor sit amet</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <section class='statis text-center'>
+    <div class="container-fluid">
+      <div class="row">
+        <h1>This week in numbers</h1>
+        <div class="col-md-3">
+          <div class="box bg-primary">
+            <i class="fa fa-eye"></i>
+            <h3>20</h3>
+            <p class="lead">Patients Seen</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="box danger">
+            <i class="fa fa-user-o"></i>
+            <h3>10</h3>
+            <p class="lead">New Patients</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="box warning">
+            <i class="fa fa-snapchat-ghost"></i>
+            <h3>0</h3>
+            <p class="lead">Patients Lost</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="box success">
+            <i class="fa fa-handshake-o"></i>
+            <h3>10</h3>
+            <p class="lead">Discharged Patients</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="chrt3">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="chart-container">
+            <canvas id="chart3" width="100%"></canvas>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="box">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+{% endblock %}
