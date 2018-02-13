@@ -3,12 +3,13 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Doctor(models.Model):
+    title = models.CharField(max_length=20)
     name = models.CharField(max_length=200)
     license_number = models.IntegerField()
     specialty = models.CharField(max_length=200)
     hospital = models.CharField(max_length=200)
     profile_photo = models.ImageField(upload_to='doctor_profiles/')
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, null=True)
 
 class NextOfKin(models.Model):
     name = models.CharField(max_length=100)

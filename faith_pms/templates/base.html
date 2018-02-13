@@ -481,11 +481,12 @@ body {background-color: #2a2b3d}
   </head>
   <body>
     <aside class="side-nav" id="show-side-navigation1">
+      {% if user.is_authenticated %}
       <i class="fa fa-bars close-aside hidden-sm hidden-md hidden-lg" data-close="show-side-navigation1"></i>
       <div class="heading">
-        <img src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance" alt="">
+        <img src="{{doctor.profile_photo.url}}" alt="" style="height:60px; width:60px">
         <div class="info">
-          <h3><a href="#">Newton Bii</a></h3>
+          <h3><a href="#">{{doctor.name}}</a></h3>
           <p>I am a real doctor</p>
         </div>
       </div>
@@ -508,7 +509,7 @@ body {background-color: #2a2b3d}
         </li>
         <li><i class="fa fa-bolt fa-fw"></i><a href="#"> My Reviews</a>
         </li>
-        <li><i class="fa fa-envelope-open fa-fw"></i><a href="#">Messages <span class="num dang">56</span></a></li>
+        <li><i class="fa fa-envelope-open fa-fw"></i><a href="#">Messages <span class="num dang">3</span></a></li>
         <li><i class="fa fa-wrench fa-fw"></i><a href="#"> Settings</a>
         </li>
       </ul>
@@ -520,27 +521,27 @@ body {background-color: #2a2b3d}
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
               <i class="fa fa-align-right"></i>
             </button>
-            <a class="navbar-brand" href="#" style="font-family: 'Amaranth', sans-serif; font-size:30px">faith<span class="main-color" style="font-size:40px;font-family: 'Monoton', cursive">PMS</span></a>
+            <a class="navbar-brand" href="/" style="font-family: 'Amaranth', sans-serif; font-size:30px">f<span class="main-color" style="font-size:40px;font-family: 'Monoton', cursive">PMS</span></a>
           </div>
           <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#"><i class="fa fa-user-o fw"></i> My Profile</a></li>
+                  <li><a href="/accounts/profile"><i class="fa fa-user-o fw"></i> My Profile</a></li>
                   <li><a href="#"><i class="fa fa-envelope-o fw"></i> Messages</a></li>
                   <li><a href="#"><i class="fa fa-question-circle-o fw"></i> Help </a></li>
                   <li role="separator" class="divider"></li>
-                  <li><a href="#"><i class="fa fa-sign-out"></i> Log out</a></li>
+                  <li><a href="/logout"><i class="fa fa-sign-out"></i> Log out</a></li>
                 </ul>
               </li>
-              <li><a href="#"><i class="fa fa-comments"></i><span>23</span></a></li>
-              <li><a href="#"><i class="fa fa-bell-o"></i><span>98</span></a></li>
+              <li><a href="#"><i class="fa fa-bell-o"></i><span>1</span></a></li>
               <li><a href="#"><i data-show="show-side-navigation1" class="fa fa-bars show-side-btn"></i></a></li>
             </ul>
           </div>
         </div>
       </nav>
+      {% endif %}
       <script src='http://code.jquery.com/jquery-latest.js'></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>

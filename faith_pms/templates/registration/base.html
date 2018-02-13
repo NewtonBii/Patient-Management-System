@@ -1,0 +1,39 @@
+{% load bootstrap3 %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  {%if title%}
+
+  <title>{{title}}</title>
+
+  {%endif%}
+
+  {% block styles %}
+    {% bootstrap_css %}
+
+  {% endblock %}
+  <link href="https://fonts.googleapis.com/css?family=Droid+Sans|Amaranth|Monoton" rel="stylesheet">
+
+</head>
+
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #CCC;">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      </button>
+      <a class="navbar-brand" href="#" style="font-family: 'Amaranth', sans-serif; font-size:30px; color:white;text-align:left">f<span class="main-color" style="font-size:40px;font-family: 'Monoton', cursive;color: #ffc107">PMS</span></a>
+    </div>
+
+  </nav>
+
+  {% block content %}  {%endblock%}
+
+
+</html>
