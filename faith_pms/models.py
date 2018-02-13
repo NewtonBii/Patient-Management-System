@@ -38,10 +38,10 @@ class Patient(models.Model):
     email = models.EmailField()
     NHIF_number = models.IntegerField(default=0)
     blood_group = models.CharField(max_length=5)
-    next_of_kin = models.ForeignKey(NextOfKin)
-    medications = models.ForeignKey(Medicine)
-    medical_cover = models.ForeignKey(MedicalCover)
-    allergies_and_directives = models.ForeignKey(AllergiesAndDirectives)
+    next_of_kin = models.ForeignKey(NextOfKin, null=True)
+    medications = models.ForeignKey(Medicine, null=True)
+    medical_cover = models.ForeignKey(MedicalCover, null=True)
+    allergies_and_directives = models.ForeignKey(AllergiesAndDirectives, null=True)
 
 
 # class NextOfKin(models.Model):
