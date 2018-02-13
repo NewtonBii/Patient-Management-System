@@ -41,3 +41,10 @@
     * Specialty
     * Hospital(Foreign Key to Hospital)
     * Profile Photo
+
+## User Specifications
+* As a doctor you will be able to create an account and login.
+* You will be able to search for patients based on their NHIF numbers.
+* View patient's medical records.
+* Administer treatment to the patients.
+* Checkout to the patient's insurer or their selected mode of payment.
