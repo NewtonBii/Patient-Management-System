@@ -33,6 +33,7 @@
     * Level of Severity
   Medical Cover
     * Name of Insurer
+    * Email of Insurer
     * Name of Cover
 
   **Doctor's Model**
