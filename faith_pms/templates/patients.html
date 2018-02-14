@@ -2,16 +2,17 @@
 {% block content %}
 <div class="container">
   {% for patient in patients %}
-  <figure class="snip1515">
-    <div class="profile-image"><img src="{{patient.profile_photo.url}}" alt="{{patient.name}}" /></div>
-    <figcaption>
-      <h3>{{patient.name}}</h3>
-      <h4>{{patient.gender}} </h4>
-      <a href="#">
-      <input type="button" name="" value="View Details" class="btn btn-default btn-block btn-primary">
-      </a>
-    </figcaption>
-  </figure>
+    <figure class="snip1515">
+      <div class="profile-image"><img src="{{patient.profile_photo.url}}" alt="{{patient.name}}" /></div>
+      <figcaption>
+        <h3>{{patient.name}}</h3>
+        <h4>{{patient.gender}} </h4>
+        <a href="{% url 'singlePatient' patient.NHIF_number %}">
+        <input type="button" name="" value="View Details" class="btn btn-default btn-block btn-primary">
+        </a>
+      </figcaption>
+    </figure>
+
   {% endfor %}
 </div>
 

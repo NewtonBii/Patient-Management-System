@@ -1,0 +1,101 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container-fluid" style="margin-top:50px; color:black">
+<div class="row">
+  <div class="col-sm-9">
+
+      <div class="col-sm-4" style="border-right: 1px solid #ccc">
+        <div class="container" style="padding:5px">
+          <img src="{{patient.profile_photo.url}}" alt="{{patient.name}}" style="height:190px; width:190px; border-radius:10px">
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="box" style="color:#ccc; margin-top:50px">
+          <h4><span id="titles">Name: </span>{{patient.name}}</h4>
+          <h4><span id="titles">Age: </span>{{patient.date_of_birth|timesince}}</h4>
+          <h4><span id="titles">Gender: </span>{{patient.gender}}</h4>
+          <h4><span id="titles">Contact: </span>0{{patient.phone_number}}</h4>
+        </div>
+      </div>
+      <div class="col-sm-4" style="color:#ccc; margin-top:40px">
+        <h4><span id="titles">NHIF number:</span> {{patient.NHIF_number}}</h4>
+        <h4><span id="titles">Status: </span>{{patient.status}}</h4>
+        <h4><span id="titles">Blood Group: </span>{{patient.blood_group}}</h4>
+      </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="row" style="height:70px">
+
+    </div>
+    <input type="button" name="New Treatment" value="Start Treatment" class="btn btn-default btn-primary">
+    <div class="row">
+
+    </div>
+  </div>
+    </div>
+    <hr>
+  <div class="row">
+    <div class="col-sm-3" style="border-right: 1px solid #ccc">
+      <div class="NextOfKin" style="color:#ccc">
+        <header style="font-size:15px">
+          <h3>Next Of Kin</h3>
+        </header>
+        <hr>
+        <section style="margin-top:-10px">
+          <h4><span id="titles">Name: </span>{{kin.name}}</h4>
+          <h4><span id="titles">Relationship: </span>{{kin.relationship}}</h4>
+          <h4><span id="titles">Contact: </span>0{{kin.phone_number}}</h4>
+        </section>
+      </div>
+    </div>
+    <div class="col-sm-3" style="border-right: 1px solid #ccc">
+      <div class="NextOfKin" style="color:#ccc">
+        <header style="font-size:15px">
+          <h3>Medical Cover</h3>
+        </header>
+        <hr>
+        <section style="margin-top:-10px">
+          <h4><span id="titles">Name: </span>{{cover.name}}</h4>
+          <h4><span id="titles">Type Of Cover: </span>{{cover.type_of_cover}}</h4>
+          <h4><span id="titles">Contact: </span>{{cover.email}}</h4>
+        </section>
+      </div>
+    </div>
+    <div class="col-sm-3" style="border-right: 1px solid #ccc">
+      <div class="NextOfKin" style="color:#ccc">
+        <header style="font-size:15px">
+          <h3>Allergies</h3>
+        </header>
+        <hr>
+        <section style="margin-top:-10px">
+          <h4><span id="titles">Name: </span>{{allergies.name}}</h4>
+          <h4><span id="titles">Level: </span>{{allergies.level}}</h4>
+        </section>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="NextOfKin" style="color:#ccc">
+        <header style="font-size:15px">
+          <h3>Current Medication</h3>
+        </header>
+        <hr>
+        <section style="margin-top:-10px">
+          <h4><span id="titles">Medication:</span> {{medicine.name}}</h4>
+          <h4><span id="titles">Given:</span> {{medicine.date_given|timesince}} ago</h4>
+          <h4><span id="titles">Given by:</span> Dr. {{doctor_prescribing.name}}</h4>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+<style media="screen">
+  #titles{
+    color: #F2F3F4;
+    font-size: 15px;
+    font-weight: bolder;
+  }
+
+  h4,h3{
+    color: #ffc107;
+  }
+</style>
+{% endblock %}

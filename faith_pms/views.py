@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Patient, Doctor
+from .models import Patient, Doctor, NextOfKin, MedicalCover, AllergiesAndDirectives, Medicine
 from .forms import UpdateProfileForm, NewPatientForm, NewNextOfKinForm, NewMedicineForm, MedicalCoverForm, AllergiesAndDirectivesForm
 # Create your views here.
 @login_required(login_url='/accounts/login')
@@ -60,3 +60,14 @@ def new_patient(request, username):
         mcform = MedicalCoverForm()
         adform = AllergiesAndDirectivesForm()
     return render(request, 'new_patient.html', {'doctor':doctor, 'form':form, 'nform':nform, 'mform':mform, 'mcform':mcform, 'adform':adform})
+
+def single_patient(request, nhif_number):
+    current_user = request.user
+    patient = Patient.objects.get(NHIF_number = nhif_number)
+    next_of_kin = NextOfKin.objects.get(id=patient.next_of_kin_id)
+    doctor = Doctor.objects.get(user_id=current_user.id)
+    medical_cover = MedicalCover.objects.get(id=patient.medical_cover_id)
+    allergies = AllergiesAndDirectives.objects.get(id = patient.allergies_and_directives_id)
+    medicine = Medicine.objects.get(id=patient.medications_id)
+    doctor_prescribing = Doctor.objects.get(id = medicine.doctor_prescribed_id)
+    return render(request, 'single_patient.html', {'patient':patient, 'doctor':doctor, 'kin':next_of_kin, 'cover':medical_cover, 'allergies':allergies, 'medicine':medicine, 'doctor_prescribing':doctor_prescribing})
