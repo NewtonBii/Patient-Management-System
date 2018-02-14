@@ -1,2 +1,32 @@
-{% extends 'base.html' %}
-{% block content %}{% endblock %}
+{% extends 'base.html' %}{% load bootstrap3 %} {% load staticfiles %}
+{% block content %}
+<div class="col-sm-4">
+
+</div>
+<div class="col-sm-4">
+  <div class="well" style="margin-top:150px">
+    <form action="" method="POST" enctype="multipart/form-data">
+      {%csrf_token%}
+      <div class="form-group">
+        {{ form.name.label }}
+        {{ form.name }}
+        {{ form.name.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.profile_photo.label }}
+        {{ form.profile_photo }}
+        {{ form.profile_photo.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.hospital.label }}
+        {{ form.hospital }}
+        {{ form.hospital.errors }}
+      </div>
+      <button type="submit" class="btn btn-default btn-block btn-primary">UPDATE</button>
+    </form>
+  </div>
+</div>
+<div class="col-sm-4">
+
+</div>
+{% endblock %}

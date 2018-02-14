@@ -3,9 +3,11 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Doctor(models.Model):
-    title = models.CharField(max_length=20)
+    title = models.CharField(max_length=20, null=True)
+    description = models.CharField(max_length=20, null=True)
     name = models.CharField(max_length=200)
-    license_number = models.IntegerField()
+    phone_number = models.IntegerField(null=True)
+    license_number = models.IntegerField(null=True)
     specialty = models.CharField(max_length=200)
     hospital = models.CharField(max_length=200)
     profile_photo = models.ImageField(upload_to='doctor_profiles/')

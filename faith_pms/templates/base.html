@@ -487,14 +487,14 @@ body {background-color: #2a2b3d}
         <img src="{{doctor.profile_photo.url}}" alt="" style="height:60px; width:60px">
         <div class="info">
           <h3><a href="#">{{doctor.name}}</a></h3>
-          <p>I am a real doctor</p>
+          <p>{{doctor.description}}</p>
         </div>
       </div>
       <div class="search">
         <input type="text" placeholder="Enter Patient ID"><i class="fa fa-search"></i>
       </div>
       <ul class="categories">
-        <li><i class="fa fa-home fa-fw" aria-hidden="true"></i><a href="#">Home</a>
+        <li><i class="fa fa-home fa-fw" aria-hidden="true"></i><a href="/">Home</a>
         </li>
         <li><i class="fa fa-envelope fa-fw"></i><a href="#"> New Message</a>
           <!-- <ul class="side-nav-dropdown">
@@ -509,7 +509,7 @@ body {background-color: #2a2b3d}
         </li>
         <li><i class="fa fa-bolt fa-fw"></i><a href="#"> My Reviews</a>
         </li>
-        <li><i class="fa fa-envelope-open fa-fw"></i><a href="#">Messages <span class="num dang">3</span></a></li>
+        <li><i class="fa fa-envelope-open fa-fw"></i><a href="{% url 'myMessages' %}">Inbox <span class="num dang">3</span></a></li>
         <li><i class="fa fa-wrench fa-fw"></i><a href="#"> Settings</a>
         </li>
       </ul>
@@ -529,7 +529,7 @@ body {background-color: #2a2b3d}
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="/accounts/profile"><i class="fa fa-user-o fw"></i> My Profile</a></li>
-                  <li><a href="#"><i class="fa fa-envelope-o fw"></i> Messages</a></li>
+                  <li><a href="{% url 'myMessages' %}"><i class="fa fa-envelope-o fw"></i> Inbox <sup>3</sup></a></li>
                   <li><a href="#"><i class="fa fa-question-circle-o fw"></i> Help </a></li>
                   <li role="separator" class="divider"></li>
                   <li><a href="/logout"><i class="fa fa-sign-out"></i> Log out</a></li>

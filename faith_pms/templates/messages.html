@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block content %}
+<div class="col-sm-3">
+
+</div>
+<div class="col-sm-6">
+<div class="well">
+  <p class="text-center">Latest Messages</p>
+  <hr>
+  <div class="well" id="message_well">
+    <div class="row">
+      <div class="col-sm-1" style="background-color:green">
+      </div>
+      <div class="col-sm-11">
+        <p style="font-weight:bolder" class="text-primary">Newton Bii</p><br>
+        <p style="margin-top:-20px">Pick up You kids</p>
+      </div>
+    </div>
+  </div>
+  <div class="well" id="message_well">
+    <p style="font-weight:bolder" class="text-primary">Newton Bii</p><br>
+    <p style="margin-top:-20px">Pick up You kids</p>
+  </div>
+  <div class="well" id="message_well">
+    <p style="font-weight:bolder" class="text-primary">Newton Bii</p><br>
+    <p style="margin-top:-20px">Pick up You kids</p>
+  </div>
+
+</div>
+</div>
+<div class="col-sm-3">
+</div>
+<style media="screen">
+  #message_well:hover{
+    background-color: white;
+    cursor: pointer;
+    transition: 1s;
+  }
+  #message_well{
+    border-radius: 30px;
+  }
+</style>
+{% endblock %}

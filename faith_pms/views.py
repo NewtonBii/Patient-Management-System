@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Patient, Doctor
 from .forms import UpdateProfileForm
@@ -17,6 +17,7 @@ def profile(request):
 def update_profile(request, username):
     current_user = request.user
     username = current_user.username
+    doctor = Doctor.objects.get(user_id=current_user.id)
     if request.method == 'POST':
         form = UpdateProfileForm(request.POST, request.FILES)
         if form.is_valid():
@@ -26,4 +27,10 @@ def update_profile(request, username):
         return redirect('myProfile')
     else:
         form = UpdateProfileForm()
-    return render(request, 'update_profile.html', {'form':form})
+    return render(request, 'update_profile.html', {'form':form, 'doctor':doctor})
+
+def messages(request):
+    current_user = request.user
+    doctor = Doctor.objects.get(user_id=current_user.id)
+    patients  = Patient.objects.all()
+    return render(request, 'messages.html', {'doctor':doctor, 'patients':patients})
