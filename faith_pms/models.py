@@ -52,6 +52,7 @@ class Patient(models.Model):
     medical_cover = models.ForeignKey(MedicalCover, null=True)
     allergies_and_directives = models.ForeignKey(AllergiesAndDirectives, null=True)
     doctor = models.ForeignKey(Doctor, null=True)
+    profile_photo = models.ImageField(upload_to='patients_photo/', null=True)
 
 
 # class NextOfKin(models.Model):

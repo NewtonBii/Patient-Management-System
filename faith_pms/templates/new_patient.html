@@ -1,3 +1,88 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}{% load bootstrap3 %} {% load staticfiles %}
 {% block content %}
+<div class="col-sm-4">
+
+</div>
+<div class="col-sm-4">
+  <div class="well" style="margin-top:150px">
+    <form action="" method="POST" enctype="multipart/form-data">
+      {%csrf_token%}
+      <div class="form-group">
+        {{ form.name.label }}
+        {{ form.name }}
+        {{ form.name.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.date_of_birth.label }}
+        {{ form.date_of_birth }}
+        {{ form.date_of_birth.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.phone_number.label }}
+        {{ form.phone_number }}
+        {{ form.phone_number.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.gender.label }}
+        {{ form.gender }}
+        {{ form.gender.errors }}
+      </div><div class="form-group">
+        {{ form.id_number.label }}
+        {{ form.id_number }}
+        {{ form.id_number.errors }}
+      </div><div class="form-group">
+        {{ form.status.label }}
+        {{ form.status }}
+        {{ form.status.errors }}
+      </div><div class="form-group">
+        {{ form.email.label }}
+        {{ form.email }}
+        {{ form.email.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.NHIF_number.label }}
+        {{ form.NHIF_number }}
+        {{ form.NHIF_number.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.blood_group.label }}
+        {{ form.blood_group }}
+        {{ form.blood_group.errors }}
+      </div><div class="form-group">
+        {{ form.next_of_kin.label }}
+        {{ form.next_of_kin }}
+        {{ form.next_of_kin.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.medications.label }}
+        {{ form.medications }}
+        {{ form.medications.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.medical_cover.label }}
+        {{ form.medical_cover }}
+        {{ form.medical_cover.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.medical_cover.label }}
+        {{ form.medical_cover }}
+        {{ form.medical_cover.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.allergies_and_directives.label }}
+        {{ form.allergies_and_directives }}
+        {{ form.allergies_and_directives.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.profile_photo.label }}
+        {{ form.profile_photo }}
+        {{ form.profile_photo.errors }}
+      </div>
+      <button type="submit" class="btn btn-default btn-block btn-primary">UPDATE</button>
+    </form>
+  </div>
+</div>
+<div class="col-sm-4">
+
+</div>
 {% endblock %}

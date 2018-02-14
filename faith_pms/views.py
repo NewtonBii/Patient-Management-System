@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Patient, Doctor
-from .forms import UpdateProfileForm
+from .forms import UpdateProfileForm, NewPatientForm
 # Create your views here.
 @login_required(login_url='/accounts/login')
 def dashboard(request):
@@ -41,7 +41,17 @@ def patients(request):
     patients  = Patient.objects.get(doctor=doctor)
     return render(request, 'patients.html', {'patients':patients, 'doctor':doctor})
 
-def new_patient(request):
+def new_patient(request, username):
     current_user = request.user
+    username = current_user.username
     doctor = Doctor.objects.get(user_id=current_user.id)
-    return render(request, 'new_patient.html', {'doctor':doctor})
+    if request.method == 'POST':
+        form = NewPatientForm(request.POST, request.FILES)
+        if form.is_valid():
+            patient = form.save()
+            patient.user = request.user
+            patient.save()
+        return redirect('dashboard')
+    else:
+        form = NewPatientForm()
+    return render(request, 'new_patient.html', {'doctor':doctor, 'form':form})

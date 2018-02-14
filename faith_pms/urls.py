@@ -9,7 +9,7 @@ url(r'^accounts/profile/', views.profile, name ='myProfile'),
 url(r'^messages/', views.messages, name='myMessages'),
 url(r'^new/profile/(?P<username>[-_\w.]+)$', views.update_profile, name='updateProfile'),
 url(r'^patients/all', views.patients, name='allPatients'),
-url(r'^new/patient', views.new_patient, name='newPatient')
+url(r'^new/patient/(?P<username>[-_\w.]+)$', views.new_patient, name='newPatient')
 ]
 
 if settings.DEBUG:
