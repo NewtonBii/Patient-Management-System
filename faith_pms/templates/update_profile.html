@@ -1,16 +1,25 @@
 {% extends 'base.html' %}{% load bootstrap3 %} {% load staticfiles %} {% block content %}
-<div class="col-sm-4">
+<div class="col-sm-2">
 
 </div>
-<div class="col-sm-4">
-  <div class="container" id="medical_cover_form">
+<div class="col-sm-8">
+  <div class="container">
     <form id="contact" action="" method="post">
-      <h3>Medical Cover</h3>
+      <h3>Update Your Profile</h3>
+      <fieldset>
+        {{form.title.label}}{{form.title}}{{form.title.errors}}
+      </fieldset>
       <fieldset>
         {{form.name.label}}{{form.name}}{{form.name.errors}}
       </fieldset>
       <fieldset>
         {{form.hospital.label}} {{form.hospital}} {{form.hospital.errors}}
+      </fieldset>
+      <fieldset>
+        {{form.email.label}}{{form.email}}{{form.email.errors}}
+      </fieldset>
+      <fieldset>
+        {{form.description.label}}{{form.description}}{{form.description.errors}}
       </fieldset>
       <fieldset>
         {{form.profile_photo.label}} <br>{{form.profile_photo}} {{form.profile_photo.errors}}
@@ -21,7 +30,7 @@
     </form>
   </div>
 </div>
-<div class="col-sm-4">
+<div class="col-sm-2">
 
 </div>
 <style media="screen">
@@ -45,14 +54,11 @@ font-weight: 100;
 font-size: 12px;
 line-height: 30px;
 color: #777;
-background: #4CAF50;
 }
 
 .container {
-max-width: 400px;
-width: 100%;
-margin: 0 auto;
-position: relative;
+width: 500px;
+margin-top: -50px;
 }
 
 #contact input[type="text"],
@@ -144,10 +150,6 @@ transition: background-color 0.3s ease-in-out;
 box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.copyright {
-text-align: center;
-}
-
 #contact input:focus,
 #contact textarea:focus {
 outline: 0;
@@ -170,4 +172,5 @@ color: #888;
 color: #888;
 }
 </style>
+
 {% endblock %}

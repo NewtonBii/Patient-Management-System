@@ -12,6 +12,7 @@ class Doctor(models.Model):
     hospital = models.CharField(max_length=200)
     profile_photo = models.ImageField(upload_to='doctor_profiles/')
     user = models.ForeignKey(User, null=True)
+    email = models.EmailField(null=True)
 
     def __str__(self):
         return self.name

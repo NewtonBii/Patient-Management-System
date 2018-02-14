@@ -4,7 +4,7 @@ from .models import Doctor, Patient, NextOfKin, Medicine, MedicalCover, Allergie
 class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Doctor
-        fields = ('profile_photo', 'name', 'hospital')
+        fields = ('profile_photo', 'name', 'hospital', 'email', 'description', 'title')
 
 class NewPatientForm(forms.ModelForm):
     class Meta:
