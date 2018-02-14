@@ -13,6 +13,10 @@ class Doctor(models.Model):
     profile_photo = models.ImageField(upload_to='doctor_profiles/')
     user = models.ForeignKey(User, null=True)
 
+    def __str__(self):
+        return self.name
+
+
 class NextOfKin(models.Model):
     name = models.CharField(max_length=100)
     relationship = models.CharField(max_length=50)
@@ -47,6 +51,7 @@ class Patient(models.Model):
     medications = models.ForeignKey(Medicine, null=True)
     medical_cover = models.ForeignKey(MedicalCover, null=True)
     allergies_and_directives = models.ForeignKey(AllergiesAndDirectives, null=True)
+    doctor = models.ForeignKey(Doctor, null=True)
 
 
 # class NextOfKin(models.Model):

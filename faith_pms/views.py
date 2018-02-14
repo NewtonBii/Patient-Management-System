@@ -32,5 +32,16 @@ def update_profile(request, username):
 def messages(request):
     current_user = request.user
     doctor = Doctor.objects.get(user_id=current_user.id)
-    patients  = Patient.objects.all()
+
     return render(request, 'messages.html', {'doctor':doctor, 'patients':patients})
+
+def patients(request):
+    current_user = request.user
+    doctor = Doctor.objects.get(user_id=current_user.id)
+    patients  = Patient.objects.get(doctor=doctor)
+    return render(request, 'patients.html', {'patients':patients, 'doctor':doctor})
+
+def new_patient(request):
+    current_user = request.user
+    doctor = Doctor.objects.get(user_id=current_user.id)
+    return render(request, 'new_patient.html', {'doctor':doctor})
