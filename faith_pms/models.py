@@ -22,20 +22,28 @@ class NextOfKin(models.Model):
     relationship = models.CharField(max_length=50)
     phone_number = models.IntegerField(default=0)
     email = models.EmailField()
+    def __str__(self):
+        return self.name
 
 class Medicine(models.Model):
     name = models.CharField(max_length=200)
     date_given = models.DateTimeField()
     doctor_prescribed = models.ForeignKey(Doctor)
+    def __str__(self):
+        return self.name
 
 class MedicalCover(models.Model):
     name = models.CharField(max_length=150)
     email = models.EmailField()
     type_of_cover = models.CharField(max_length=150)
+    def __str__(self):
+        return self.name
 
 class AllergiesAndDirectives(models.Model):
     name = models.CharField(max_length=100)
     level = models.CharField(max_length=50)
+    def __str__(self):
+        return self.name
 
 class Patient(models.Model):
     name = models.CharField(max_length=100)
@@ -53,7 +61,3 @@ class Patient(models.Model):
     allergies_and_directives = models.ForeignKey(AllergiesAndDirectives, null=True)
     doctor = models.ForeignKey(Doctor, null=True)
     profile_photo = models.ImageField(upload_to='patients_photo/', null=True)
-
-
-# class NextOfKin(models.Model):
-#     name = models.CharField
