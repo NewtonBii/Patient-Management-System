@@ -1,0 +1,31 @@
+  <div class="container" style="background-color:#EDBB99">
+    <header>
+      <a class="navbar-brand" style="font-family: 'Amaranth', sans-serif; font-size:30px"><span class="main-color" style="font-size:40px;font-family: 'Monoton', cursive">PaMaSystem</span></a>
+    </header>
+    <h4>Hey {{patient.name}}: We have compiled your Medical Report as below</h4>
+    <hr>
+    <table class="table table-striped">
+      <thead>
+        <th>Symptoms</th>
+        <th>Diagnosis</th>
+        <th>Recommendations</th>
+      </thead>
+      <tr>
+        <td style="border-right:1px solid black">{{treatment.symptoms}}</td>
+        <td style="border-right:1px solid black">{{treatment.diagnosis}}</td>
+        <td style="border-right:1px solid black">{{treatment.recommendations}}</td>
+      </tr>
+
+      <tr>
+        <td>
+          <h4>Consultation Fee</h4></td>
+        <td>
+          <h4>{{treatment.consultation_fee}}</h4>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <h4>You were attended by Dr. {{doctor.name}} ({{doctor.hospital}}) on {{treatment.date|date}} at {{treatment.date|time}}</h4>
+    <footer>Thanks for Using PaMaSystem</footer>
+    <footer>Regards PaMaSystem Team</footer>
+  </div>

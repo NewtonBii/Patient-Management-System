@@ -1,0 +1,3 @@
+Hi {{patient.name}}
+
+Your Medical Report as at {{treatment.date}}
