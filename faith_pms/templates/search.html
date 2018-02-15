@@ -1,0 +1,112 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="container">
+  {% for patient in patients %}
+    <figure class="snip1515">
+      <div class="profile-image"><img src="{{patient.profile_photo.url}}" alt="{{patient.name}}" /></div>
+      <figcaption>
+        <h3>{{patient.name}}</h3>
+        <h4>{{patient.gender}} </h4>
+        <a href="{% url 'singlePatient' patient.NHIF_number %}">
+        <input type="button" name="" value="View Details" class="btn btn-default btn-block btn-primary">
+        </a>
+      </figcaption>
+    </figure>
+
+  {% endfor %}
+</div>
+
+<style media="screen">
+@import url('https://fonts.googleapis.com/css?family=Open+sans');
+@import url('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+
+.snip1515 {
+font-family: 'Open Sans', Arial, sans-serif;
+position: relative;
+float: left;
+margin: 10px 1%;
+min-width: 230px;
+max-width: 315px;
+width: 100%;
+color: #000000;
+text-align: center;
+line-height: 1.4em;
+font-size: 14px;
+box-shadow: none !important;
+}
+
+.snip1515 * {
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+.snip1515 .profile-image {
+display: inline-block;
+width: 90%;
+z-index: 1;
+position: relative;
+padding: 5px;
+border: 2px solid #e8b563;
+}
+
+.snip1515 .profile-image img {
+width:80%;
+vertical-align: top;
+height: 200px;
+}
+
+.snip1515 figcaption {
+width: 100%;
+background-color: #F2F2F2;
+color: #555;
+padding: 125px 25px 25px;
+margin-top: -100px;
+display: inline-block;
+}
+
+.snip1515 h3,
+.snip1515 h4
+{
+margin: 0 0 5px;
+}
+
+.snip1515 h3 {
+font-weight: 600;
+font-size: 1.3em;
+font-family: 'Playfair Display', Arial, sans-serif;
+}
+
+.snip1515 h4 {
+color: #8c8c8c;
+font-weight: 400;
+letter-spacing: 2px;
+}
+
+.snip1515 p {
+font-size: 0.9em;
+letter-spacing: 1px;
+opacity: 0.9;
+}
+
+.snip1515 .icons {
+text-align: center;
+width: 100%;
+}
+
+.snip1515 i {
+padding: 10px 2px;
+display: inline-block;
+font-size: 18px;
+font-weight: normal;
+color: #e8b563;
+opacity: 0.75;
+}
+
+.snip1515 i:hover {
+opacity: 1;
+-webkit-transition: all 0.35s ease;
+transition: all 0.35s ease;
+}
+</style>
+{% endblock %}
