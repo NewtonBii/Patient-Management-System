@@ -10,7 +10,8 @@ url(r'^messages/', views.messages, name='myMessages'),
 url(r'^new/profile/(?P<username>[-_\w.]+)$', views.update_profile, name='updateProfile'),
 url(r'^patients/all', views.patients, name='allPatients'),
 url(r'^new/patient/', views.new_patient, name='newPatient'),
-url(r'^patient/(\d+)', views.single_patient, name = 'singlePatient')
+url(r'^patient/(\d+)', views.single_patient, name = 'singlePatient'),
+url(r'^treatment(\d+)', views.treatment, name = 'newTreatment')
 ]
 
 if settings.DEBUG:

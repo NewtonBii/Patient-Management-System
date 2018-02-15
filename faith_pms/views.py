@@ -59,7 +59,7 @@ def new_patient(request):
             patient = form.save()
             patient.doctor = doctor
             patient.save()
-            
+
         elif adform.is_valid():
             allergies = adform.save()
             allergies.save()
@@ -89,3 +89,9 @@ def single_patient(request, nhif_number):
     medicine = Medicine.objects.get(id=patient.medications_id)
     doctor_prescribing = Doctor.objects.get(id = medicine.doctor_prescribed_id)
     return render(request, 'single_patient.html', {'patient':patient, 'doctor':doctor, 'kin':next_of_kin, 'cover':medical_cover, 'allergies':allergies, 'medicine':medicine, 'doctor_prescribing':doctor_prescribing})
+
+def treatment(request, nhif_number):
+    current_user =request.user
+    patient = Patient.objects.get(NHIF_number = nhif_number)
+    doctor = Doctor.objects.get(user_id=current_user.id)
+    return render(request, 'treatment.html', {'patient':patient, 'doctor':doctor})

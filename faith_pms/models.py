@@ -66,7 +66,8 @@ class Patient(models.Model):
 class Treatment(models.Model):
     patient = models.ForeignKey(Patient)
     doctor = models.ForeignKey(Doctor)
-    medicine = models.ForeignKey(Medicine)
-    cost = models.IntegerField(default=0)
+    consultation_fee = models.IntegerField(default=0)
     date = models.DateTimeField()
+    symptoms = models.CharField(max_length=500, null=True)
     diagnosis = models.CharField(max_length=1000)
+    recommendations = models.CharField(max_length=1000, null=True)
