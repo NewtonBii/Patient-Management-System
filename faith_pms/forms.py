@@ -1,5 +1,5 @@
 from django import forms
-from .models import Doctor, Patient, NextOfKin, Medicine, MedicalCover, AllergiesAndDirectives
+from .models import Doctor, Patient, NextOfKin, Medicine, MedicalCover, AllergiesAndDirectives, Treatment
 #......
 class UpdateProfileForm(forms.ModelForm):
     class Meta:
@@ -30,3 +30,9 @@ class AllergiesAndDirectivesForm(forms.ModelForm):
     class Meta:
         model = AllergiesAndDirectives
         fields = ('name', 'level')
+
+class TreatmentForm(forms.ModelForm):
+    class Meta:
+        model = Treatment
+        fields = ('symptoms', 'diagnosis', 'recommendations', 'consultation_fee')
+        
