@@ -96,16 +96,16 @@
   <fieldset>
     {{mform.date_given.label}} {{mform.date_given}} {{mform.date_given.errors}}
   </fieldset>
-  <fieldset>
+  <!-- <fieldset>
     {{mform.doctor_prescribed.label}} <br>{{mform.doctor_prescribed}} {{mform.doctor_prescribed.errors}}
-  </fieldset>
+  </fieldset> -->
   <fieldset>
     <button name="submit" type="submit" id="contact-submit2" data-submit="...Sending">Submit</button>
   </fieldset>
 </form>
 </div>
 <div class="container" id="medical_cover_form" style="position:absolute; z-index:100; top:10px; right:500px; display:none">
-<form id="contact" action="" method="POST">
+<form id="contact" action="{{current_user.username}}" method="POST">
   {%csrf_token%}
   <h3>Medical Cover</h3>
   <fieldset>

@@ -64,10 +64,13 @@ class Patient(models.Model):
     profile_photo = models.ImageField(upload_to='patients_photo/', null=True)
 
 class Treatment(models.Model):
-    patient = models.ForeignKey(Patient)
-    doctor = models.ForeignKey(Doctor)
+    patient = models.ForeignKey(Patient, null=True)
+    doctor = models.ForeignKey(Doctor, null=True)
     consultation_fee = models.IntegerField(default=0)
-    date = models.DateTimeField()
+    date = models.DateTimeField(auto_now=True)
     symptoms = models.CharField(max_length=500, null=True)
     diagnosis = models.CharField(max_length=1000)
     recommendations = models.CharField(max_length=1000, null=True)
+
+    class Meta:
+        ordering = ['-date']

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Patient, Doctor, NextOfKin, MedicalCover, AllergiesAndDirectives, Medicine
+from .models import Patient, Doctor, NextOfKin, MedicalCover, AllergiesAndDirectives, Medicine, Treatment
 from .forms import UpdateProfileForm, NewPatientForm, NewNextOfKinForm, NewMedicineForm, MedicalCoverForm, AllergiesAndDirectivesForm, TreatmentForm
 # Create your views here.
 @login_required(login_url='/accounts/login')
@@ -22,8 +22,6 @@ def update_profile(request, username):
         form = UpdateProfileForm(request.POST, request.FILES)
         if form.is_valid():
             doctor = form.save()
-            doctor.user = request.user
-            doctor.save()
         return redirect('myProfile')
     else:
         form = UpdateProfileForm()
@@ -52,10 +50,12 @@ def new_patient(request):
         if mform.is_valid() and nform.is_valid() and form.is_valid():
             next_of_kin = nform.save()
             next_of_kin.save()
-        # elif mform.is_valid():
+        elif mform.is_valid():
             medicine = mform.save()
+            medicine.doctor =doctor
             medicine.save()
 
+        elif form.is_valid():
             patient = form.save()
             patient.doctor = doctor
             patient.save()
@@ -94,5 +94,20 @@ def treatment(request, nhif_number):
     current_user =request.user
     patient = Patient.objects.get(NHIF_number = nhif_number)
     doctor = Doctor.objects.get(user_id=current_user.id)
-    form = TreatmentForm()
+    if request.method == 'POST':
+        form = TreatmentForm(request.POST, request.FILES)
+        if form.is_valid():
+            treatment = form.save(commit=False)
+            treatment.doctor = doctor
+            treatment.patient = patient
+            treatment.save()
+    else:
+        form = TreatmentForm()
     return render(request, 'treatment.html', {'patient':patient, 'doctor':doctor, 'form':form})
+
+def diagnosis(request, nhif_number):
+    current_user =request.user
+    doctor = Doctor.objects.get(user_id=current_user.id)
+    patient = Patient.objects.get(NHIF_number = nhif_number)
+    treatment = Treatment.objects.all().filter(patient_id=patient.id).first()
+    return render(request, 'diagnosis.html', {'doctor':doctor, 'patient':patient, 'treatment':treatment})

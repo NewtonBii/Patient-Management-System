@@ -11,7 +11,8 @@ url(r'^new/profile/(?P<username>[-_\w.]+)$', views.update_profile, name='updateP
 url(r'^patients/all', views.patients, name='allPatients'),
 url(r'^new/patient/', views.new_patient, name='newPatient'),
 url(r'^patient/(\d+)', views.single_patient, name = 'singlePatient'),
-url(r'^treatment(\d+)', views.treatment, name = 'newTreatment')
+url(r'^treatment/(\d+)', views.treatment, name = 'newTreatment'),
+url(r'^treatment/diagnosis/(\d+)', views.diagnosis, name = 'diagnosis')
 ]
 
 if settings.DEBUG:

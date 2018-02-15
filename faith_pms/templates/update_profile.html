@@ -5,6 +5,7 @@
 <div class="col-sm-8">
   <div class="container">
     <form id="contact" action="" method="post">
+      {%csrf_token%}
       <h3>Update Your Profile</h3>
       <fieldset>
         {{form.title.label}}{{form.title}}{{form.title.errors}}

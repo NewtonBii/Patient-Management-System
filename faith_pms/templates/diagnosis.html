@@ -3,29 +3,8 @@
   <div class="container" id="treatment-form" style="position:absolute; z-index:100; top:-10px; right:290px">
     <form id="contact" action="" method="POST">
       {%csrf_token%}
-      <h3>Diagnosis</h3> {{form.symptoms.label}}
-      <fieldset>
-        {{form.symptoms}}{{form.symptoms.errors}}
-      </fieldset>
-      {{form.diagnosis.label}}
-      <fieldset>
-        {{form.diagnosis}} {{form.diagnosis.errors}}
-      </fieldset>
-      {{form.recommendations.label}}
-      <fieldset>
-        {{form.recommendations}} {{form.recommendations.errors}}
-      </fieldset>
-      <fieldset>
-        {{form.consultation_fee.label}} {{form.consultation_fee}} {{form.consultation_fee.errors}}
-      </fieldset>
-      <fieldset>
-        <button name="submit" type="submit" id="contact-submit1" data-submit="...Sending">Submit</button>
-
-      </fieldset>
+      
     </form>
-    <a href="{% url 'diagnosis' patient.NHIF_number %}">
-    <button type="click" id="contact-submit1" data-submit="...Sending" class="btn btn-block" style="margin-top:-150px">View Summay</button>
-    </a>
   </div>
 </div>
 <style media="screen">
