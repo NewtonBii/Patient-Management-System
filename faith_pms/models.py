@@ -3,14 +3,14 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Doctor(models.Model):
-    title = models.CharField(max_length=20, null=True)
-    description = models.CharField(max_length=20, null=True)
-    name = models.CharField(max_length=200)
-    phone_number = models.IntegerField(null=True)
-    license_number = models.IntegerField(null=True)
-    specialty = models.CharField(max_length=200)
-    hospital = models.CharField(max_length=200)
-    profile_photo = models.ImageField(upload_to='doctor_profiles/')
+    title = models.CharField(max_length=20, null=True, default = 'Dr')
+    description = models.CharField(max_length=20, null=True, default = 'Medical Doctor')
+    name = models.CharField(max_length=200, default='Treat Me')
+    phone_number = models.IntegerField(null=True, default=0)
+    license_number = models.IntegerField(null=True, default =12345)
+    specialty = models.CharField(max_length=200, default='Physician')
+    hospital = models.CharField(max_length=200, default='Nairobi Hospital')
+    profile_photo = models.ImageField(upload_to='doctor_profiles/', default='doctor_profiles/no-image.jpg')
     user = models.ForeignKey(User, null=True)
     email = models.EmailField(null=True)
 
@@ -62,3 +62,11 @@ class Patient(models.Model):
     allergies_and_directives = models.ForeignKey(AllergiesAndDirectives, null=True)
     doctor = models.ForeignKey(Doctor, null=True)
     profile_photo = models.ImageField(upload_to='patients_photo/', null=True)
+
+class Treatment(models.Model):
+    patient = models.ForeignKey(Patient)
+    doctor = models.ForeignKey(Doctor)
+    medicine = models.ForeignKey(Medicine)
+    cost = models.IntegerField(default=0)
+    date = models.DateTimeField()
+    diagnosis = models.CharField(max_length=1000)

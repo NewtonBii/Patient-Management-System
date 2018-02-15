@@ -1,5 +1,51 @@
 {% extends 'base.html' %}{% block content %}
-<div class="wrapper">
+<div class="container-fluid" style="margin-top:50px; color:black">
+  <div class="row">
+    <div class="col-sm-9">
+
+      <div class="col-sm-4" style="border-right: 1px solid #ccc">
+        <div class="container" style="padding:5px">
+          <img src="{{doctor.profile_photo.url}}" alt="{{doctor.name}}" style="height:190px; width:190px; border-radius:10px">
+        </div>
+      </div>
+      <div class="col-sm-5">
+        <div class="box" style="color:#ccc; margin-top:50px; width:100%">
+          <h4><span id="titles">Name:</span> Dr. {{doctor.name}}</h4>
+          <h4><span id="titles">Email: </span>{{user.email}}</h4>
+          <h4><span id="titles">Contact: </span>0{{doctor.phone_number}}</h4>
+          <h4><span id="titles">Specialty: </span>{{doctor.specialty}}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="row" style="height:70px">
+
+      </div>
+      <a href="{% url 'updateProfile' user.username %}">
+      <i class="fa fa-cogs" style="margin-right:10px; font-size:30px; color:#ccc"></i><input type="submit" name="" value="Update Profile" class="btn btn-default">
+    </a>
+      <div class="row">
+
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+  </div>
+</div>
+<style media="screen">
+  #titles {
+    color: #F2F3F4;
+    font-size: 15px;
+    font-weight: bolder;
+  }
+
+  h4,
+  h3 {
+    color: #ffc107;
+  }
+</style>
+<!-- <div class="wrapper">
   <div class="personal-info">
     <img src="{{doctor.profile_photo.url}}" alt="" />
     <h1 style="color:white">{{doctor.name}}<br /><span>{{doctor.title}}</span></h1>
@@ -128,6 +174,6 @@
     text-align: justify;
     color: rgba(0, 0, 0, .7)
   }
-</style>
+</style> -->
 
 {% endblock %}

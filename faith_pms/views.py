@@ -41,18 +41,36 @@ def patients(request):
     patients  = Patient.objects.all().filter(doctor=doctor)
     return render(request, 'patients.html', {'patients':patients, 'doctor':doctor})
 
-def new_patient(request, username):
+def new_patient(request):
     current_user = request.user
-    username = current_user.username
     doctor = Doctor.objects.get(user_id=current_user.id)
     if request.method == 'POST':
         nform = NewNextOfKinForm(request.POST, request.FILES)
         form = NewPatientForm(request.POST, request.FILES)
-        if form.is_valid() and nform.is_valid():
+        mform = NewMedicineForm(request.POST, request.FILES)
+        adform = AllergiesAndDirectivesForm(request.POST, request.FILES)
+        if mform.is_valid() and nform.is_valid() and form.is_valid():
+            next_of_kin = nform.save()
+            next_of_kin.save()
+        # elif mform.is_valid():
+            medicine = mform.save()
+            medicine.save()
+
             patient = form.save()
-            patient.user = request.user
+            patient.doctor = doctor
             patient.save()
-        return redirect('dashboard')
+            
+        elif adform.is_valid():
+            allergies = adform.save()
+            allergies.save()
+        return redirect('newPatient')
+
+    # if request.method == 'POST':
+    #     nform = NewNextOfKinForm(request.POST, request.FILES)
+    #     if nform.is_valid():
+    #         next_of_kin = nform.save()
+    #         next_of_kin.save()
+    #     return redirect('allPatients')
     else:
         form = NewPatientForm()
         nform = NewNextOfKinForm()
