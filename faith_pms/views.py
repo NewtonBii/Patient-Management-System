@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Patient, Doctor, NextOfKin, MedicalCover, AllergiesAndDirectives, Medicine
-from .forms import UpdateProfileForm, NewPatientForm, NewNextOfKinForm, NewMedicineForm, MedicalCoverForm, AllergiesAndDirectivesForm
+from .forms import UpdateProfileForm, NewPatientForm, NewNextOfKinForm, NewMedicineForm, MedicalCoverForm, AllergiesAndDirectivesForm, TreatmentForm
 # Create your views here.
 @login_required(login_url='/accounts/login')
 def dashboard(request):
@@ -94,4 +94,5 @@ def treatment(request, nhif_number):
     current_user =request.user
     patient = Patient.objects.get(NHIF_number = nhif_number)
     doctor = Doctor.objects.get(user_id=current_user.id)
-    return render(request, 'treatment.html', {'patient':patient, 'doctor':doctor})
+    form = TreatmentForm()
+    return render(request, 'treatment.html', {'patient':patient, 'doctor':doctor, 'form':form})

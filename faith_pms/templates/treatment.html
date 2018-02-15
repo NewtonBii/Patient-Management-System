@@ -1,326 +1,214 @@
 {% extends 'base.html' %}{% load bootstrap3 %} {% load staticfiles %} {% block content %}
 <div class="container-fluid">
-  <div class="well" style="margin-top:50px">
-    <form action="" method="POST" enctype="multipart/form-data">
+  <div class="container" id="treatment-form" style="position:absolute; z-index:100; top:-10px; right:290px">
+    <form id="contact" action="" method="POST">
       {%csrf_token%}
-      <h5 style="display: block;font-size: 30px;font-weight: 300;margin-bottom: 10px;">Patient Information</h5>
-      <hr>
-      <div class="form-group">
-
-        <label for="name">{{form.name.label}}</label> {{form.name}} {{ form.name.errors }}
-
-        <label for="date_of_birth">{{form.date_of_birth.label}}</label> {{ form.date_of_birth }} {{ form.date_of_birth.errors }}
-
-        <label for="phone_number">{{form.phone_number.label}}</label> {{ form.phone_number }} {{ form.phone_number.errors }}
-
-        <label for="email">{{ form.email.label }}</label> {{ form.email }} {{ form.email.errors }}
-
-      </div>
-      <div class="form-group">
-        <label for="gender">{{ form.gender.label }}</label> {{ form.gender }} {{ form.gender.errors }}
-
-        <label for="id_number">{{ form.id_number.label }}</label> {{ form.id_number }} {{ form.id_number.errors }}
-
-        <label for="NHIF_number">{{ form.NHIF_number.label }}</label> {{ form.NHIF_number }} {{ form.NHIF_number.errors }}
-
-        <label for="blood_group">{{ form.blood_group.label }}</label> {{ form.blood_group }} {{ form.blood_group.errors }}
-      </div>
-      <div class="row">
-        <div class="col-sm-1">
-        </div>
-        <div class="col-sm-5">
-          <div class="form-group">
-            <label for="next_of_kin">{{ form.next_of_kin.label }}</label> {{ form.next_of_kin }} <a href="#"><i class="fa fa-plus fa-fw" id="NewNextOfKinDisplayForm"></i></a> {{ form.next_of_kin.errors }}
-          </div>
-          <div class="form-group">
-            <label for="medications">{{ form.medications.label }}</label> {{ form.medications }} <a href="#"><i class="fa fa-plus fa-fw" id="newMedicineDisplay"></i></a> {{ form.medications.errors }}
-          </div>
-
-        </div>
-        <div class="col-sm-5">
-          <div class="form-group">
-            <label for="medical_cover">{{ form.medical_cover.label }}</label> {{ form.medical_cover }} <a href="#"><i class="fa fa-plus fa-fw" id="newMedicalCoverDisplay"></i></a> {{ form.medical_cover.errors }}
-          </div>
-          <div class="form-group">
-            <label for="allergies_and_directives">{{ form.allergies_and_directives.label }}</label> {{ form.allergies_and_directives }} <a href="#"><i class="fa fa-plus fa-fw" id="allergies_and_directives_display"></i></a> {{ form.allergies_and_directives.errors }}
-          </div>
-        </div>
-        <div class="col-sm-1">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4">
-
-        </div>
-        <div class="col-sm-4">
-          <label for="profile_photo" style="display:inline; float:left">{{ form.profile_photo.label }}</label>
-          <div class="form-group" style="float:right">
-            {{ form.profile_photo }} {{ form.profile_photo.errors }}
-          </div>
-        </div>
-        <div class="col-sm-4">
-
-        </div>
-      </div>
-      <button type="submit" class="btn btn-default btn-block btn-primary">Add</button>
+      <h3>Diagnosis</h3>
+      {{form.symptoms.label}}
+      <fieldset>
+        {{form.symptoms}}{{form.symptoms.errors}}
+      </fieldset>
+      {{form.diagnosis.label}}
+      <fieldset>
+         {{form.diagnosis}} {{form.diagnosis.errors}}
+      </fieldset>
+      {{form.recommendations.label}}
+      <fieldset>
+         {{form.recommendations}} {{form.recommendations.errors}}
+      </fieldset>
+      <fieldset>
+        {{form.consultation_fee.label}} {{form.consultation_fee}} {{form.consultation_fee.errors}}
+      </fieldset>
+      <fieldset>
+        <button name="submit" type="submit" id="contact-submit1" data-submit="...Sending">Submit</button>
+      </fieldset>
     </form>
   </div>
-  <div class="container" id="next_of_kin_form" style="position:absolute; z-index:100; top:-10px; right:290px; display:none">
-  <form id="contact" action="" method="POST">
-    {%csrf_token%}
-    <h3>Next of Kin</h3>
-    <fieldset>
-      {{nform.name.label}}{{nform.name}}{{nform.name.errors}}
-    </fieldset>
-    <fieldset>
-      {{nform.relationship.label}} {{nform.relationship}} {{nform.relationship.errors}}
-    </fieldset>
-    <fieldset>
-      {{nform.phone_number.label}} <br>{{nform.phone_number}} {{nform.phone_number.errors}}
-    </fieldset>
-    <fieldset>
-      {{nform.email.label}} {{nform.email}} {{nform.email.errors}}
-    </fieldset>
-    <fieldset>
-      <button name="submit" type="submit" id="contact-submit1" data-submit="...Sending">Submit</button>
-    </fieldset>
-  </form>
-</div>
-<div class="container" id="medicine_form" style="position:absolute; z-index:100; top:10px; right:290px; display:none">
-<form id="contact" action="" method="POST">
-  {%csrf_token%}
-  <h3>Medicine</h3>
-  <fieldset>
-    {{mform.name.label}}{{mform.name}}{{mform.name.errors}}
-  </fieldset>
-  <fieldset>
-    {{mform.date_given.label}} {{mform.date_given}} {{mform.date_given.errors}}
-  </fieldset>
-  <fieldset>
-    {{mform.doctor_prescribed.label}} <br>{{mform.doctor_prescribed}} {{mform.doctor_prescribed.errors}}
-  </fieldset>
-  <fieldset>
-    <button name="submit" type="submit" id="contact-submit2" data-submit="...Sending">Submit</button>
-  </fieldset>
-</form>
-</div>
-<div class="container" id="medical_cover_form" style="position:absolute; z-index:100; top:10px; right:500px; display:none">
-<form id="contact" action="" method="POST">
-  {%csrf_token%}
-  <h3>Medical Cover</h3>
-  <fieldset>
-    {{mcform.name.label}}{{mcform.name}}{{mcform.name.errors}}
-  </fieldset>
-  <fieldset>
-    {{mcform.email.label}} {{mcform.email}} {{mcform.email.errors}}
-  </fieldset>
-  <fieldset>
-    {{mcform.type_of_cover.label}} <br>{{mcform.type_of_cover}} {{mcform.type_of_cover.errors}}
-  </fieldset>
-  <fieldset>
-    <button name="submit" type="submit" id="contact-submit3" data-submit="...Sending">Submit</button>
-  </fieldset>
-</form>
-</div>
-<div class="container" id="allergies_and_directives_form" style="position:absolute; z-index:100; top:10px; right:500px; display:none">
-<form id="contact" action="{{current_user.username}}" method="post">
-  {%csrf_token%}
-  <h3>Allergies and Directives</h3>
-  <fieldset>
-    {{adform.name.label}}{{adform.name}}{{adform.name.errors}}
-  </fieldset>
-  <fieldset>
-    {{adform.level.label}} {{adform.level}} {{adform.level.errors}}
-  </fieldset>
-  <fieldset>
-    <button name="submit" type="submit" id="contact-submit4" data-submit="...Sending">Submit</button>
-  </fieldset>
-</form>
-</div>
-
 </div>
 <style media="screen">
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic');
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
--webkit-box-sizing: border-box;
--moz-box-sizing: border-box;
--webkit-font-smoothing: antialiased;
--moz-font-smoothing: antialiased;
--o-font-smoothing: antialiased;
-font-smoothing: antialiased;
-text-rendering: optimizeLegibility;
-}
+  @import url('https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic');
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
 
-.container {
-max-width: 400px;
-width: 100%;
-margin: 0 auto;
-position: relative;
-font-family: "Roboto", Helvetica, Arial, sans-serif;
-font-weight: 100;
-font-size: 12px;
-line-height: 30px;
-color: #777;
-}
-.container-fluid{
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
-  font-weight: 100;
-  font-size: 12px;
-  line-height: 30px;
-  color: #777;
-}
-#contact input[type="text"],
-#contact input[type="email"],
-#contact input[type="tel"],
-#contact input[type="url"],
-#contact textarea,
-#contact button[type="submit"] {
-font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
-}
+  .container {
+    max-width: 600px;
+    width: 600px;
+    margin: 0 auto;
+    position: relative;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    font-size: 12px;
+    line-height: 30px;
+    color: #777;
+  }
 
-#contact {
-background: #F9F9F9;
-padding: 25px;
-margin: 150px 0;
-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-}
+  .container-fluid {
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    font-size: 12px;
+    line-height: 30px;
+    color: #777;
+  }
 
-#contact h3 {
-display: block;
-font-size: 30px;
-font-weight: 300;
-margin-bottom: 10px;
-}
+  #contact input[type="text"],
+  #contact input[type="email"],
+  #contact input[type="tel"],
+  #contact input[type="url"],
+  #contact textarea,
+  #contact button[type="submit"] {
+    font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+  }
 
-#contact h4 {
-margin: 5px 0 15px;
-display: block;
-font-size: 13px;
-font-weight: 400;
-}
+  #contact {
+    background: #F9F9F9;
+    padding: 25px;
+    margin: 150px 0;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }
 
-fieldset {
-border: medium none !important;
-margin: 0 0 10px;
-min-width: 100%;
-padding: 0;
-width: 100%;
-}
+  #contact h3 {
+    display: block;
+    font-size: 30px;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
 
-#contact input[type="text"],
-#contact input[type="email"],
-#contact input[type="tel"],
-#contact input[type="url"],
-#contact textarea {
-width: 100%;
-border: 1px solid #ccc;
-background: #FFF;
-margin: 0 0 5px;
-padding: 10px;
-}
+  #contact h4 {
+    margin: 5px 0 15px;
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+  }
 
-#contact input[type="text"]:hover,
-#contact input[type="email"]:hover,
-#contact input[type="tel"]:hover,
-#contact input[type="url"]:hover,
-#contact textarea:hover {
--webkit-transition: border-color 0.3s ease-in-out;
--moz-transition: border-color 0.3s ease-in-out;
-transition: border-color 0.3s ease-in-out;
-border: 1px solid #aaa;
-}
+  fieldset {
+    border: medium none !important;
+    margin: 0 0 10px;
+    min-width: 100%;
+    padding: 0;
+    width: 100%;
+  }
 
-#contact textarea {
-height: 100px;
-max-width: 100%;
-resize: none;
-}
+  #contact input[type="text"],
+  #contact input[type="email"],
+  #contact input[type="tel"],
+  #contact input[type="url"],
+  #contact textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+  }
 
-#contact button[type="submit"] {
-cursor: pointer;
-width: 100%;
-border: none;
-background: #4CAF50;
-color: #FFF;
-margin: 0 0 5px;
-padding: 10px;
-font-size: 15px;
-}
+  #contact input[type="text"]:hover,
+  #contact input[type="email"]:hover,
+  #contact input[type="tel"]:hover,
+  #contact input[type="url"]:hover,
+  #contact textarea:hover {
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #aaa;
+  }
 
-#contact button[type="submit"]:hover {
-background: #43A047;
--webkit-transition: background 0.3s ease-in-out;
--moz-transition: background 0.3s ease-in-out;
-transition: background-color 0.3s ease-in-out;
-}
+  #contact textarea {
+    height: 100px;
+    max-width: 100%;
+    resize: none;
+  }
 
-#contact button[type="submit"]:active {
-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
-}
+  #contact button[type="submit"] {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: #4CAF50;
+    color: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+    font-size: 15px;
+  }
 
-.copyright {
-text-align: center;
-}
+  #contact button[type="submit"]:hover {
+    background: #43A047;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
+  }
 
-#contact input:focus,
-#contact textarea:focus {
-outline: 0;
-border: 1px solid #aaa;
-}
+  #contact button[type="submit"]:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
 
-::-webkit-input-placeholder {
-color: #888;
-}
+  .copyright {
+    text-align: center;
+  }
 
-:-moz-placeholder {
-color: #888;
-}
+  #contact input:focus,
+  #contact textarea:focus {
+    outline: 0;
+    border: 1px solid #aaa;
+  }
 
-::-moz-placeholder {
-color: #888;
-}
+  ::-webkit-input-placeholder {
+    color: #888;
+  }
 
-:-ms-input-placeholder {
-color: #888;
-}
+  :-moz-placeholder {
+    color: #888;
+  }
+
+  ::-moz-placeholder {
+    color: #888;
+  }
+
+  :-ms-input-placeholder {
+    color: #888;
+  }
 </style>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script type="text/javascript">
   $(document).ready(function(event) {
 
-    $('#contact-submit1').click(function(event){
-        $('#next_of_kin_form').css("display", "none");
+    $('#contact-submit1').click(function(event) {
+      $('#next_of_kin_form').css("display", "none");
     });
 
-    $('#contact-submit2').click(function(event){
-        $('#medicine_form').css("display", "none");
+    $('#contact-submit2').click(function(event) {
+      $('#medicine_form').css("display", "none");
     });
 
-    $('#contact-submit3').click(function(event){
-        $('#medical_cover_form').css("display", "none");
+    $('#contact-submit3').click(function(event) {
+      $('#medical_cover_form').css("display", "none");
     });
 
-    $('#contact-submit4').click(function(event){
-        $('#allergies_and_directives_form').css("display", "none");
+    $('#contact-submit4').click(function(event) {
+      $('#allergies_and_directives_form').css("display", "none");
     });
 
-    $('#NewNextOfKinDisplayForm').click(function(event){
-        $('#next_of_kin_form').toggle(500);
+    $('#NewNextOfKinDisplayForm').click(function(event) {
+      $('#next_of_kin_form').toggle(500);
     });
 
-    $('#newMedicineDisplay').click(function(event){
-        $('#medicine_form').toggle(500);
+    $('#newMedicineDisplay').click(function(event) {
+      $('#medicine_form').toggle(500);
     });
-    $('#newMedicalCoverDisplay').click(function(event){
-        $('#medical_cover_form').toggle(500);
+    $('#newMedicalCoverDisplay').click(function(event) {
+      $('#medical_cover_form').toggle(500);
     });
-    $('#allergies_and_directives_display').click(function(event){
-        $('#allergies_and_directives_form').toggle(500);
+    $('#allergies_and_directives_display').click(function(event) {
+      $('#allergies_and_directives_form').toggle(500);
     });
-newMedicalCoverDisplay
+    newMedicalCoverDisplay
   });
 </script>
- {% endblock %}
+{% endblock %}
