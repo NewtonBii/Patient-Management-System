@@ -63,6 +63,11 @@ class Patient(models.Model):
     doctor = models.ForeignKey(Doctor, null=True)
     profile_photo = models.ImageField(upload_to='patients_photo/', null=True)
 
+    @classmethod
+    def search_by_nhif_number(cls, nhif_number):
+        patient = cls.objects.filter(NHIF_number__icontains=nhif_number)
+        return patient
+        
 class Treatment(models.Model):
     patient = models.ForeignKey(Patient, null=True)
     doctor = models.ForeignKey(Doctor, null=True)

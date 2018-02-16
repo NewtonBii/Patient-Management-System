@@ -600,9 +600,11 @@
         <p>{{doctor.description}}</p>
       </div>
     </div>
-    <div class="search">
-      <input type="text" placeholder="Enter Patient NHIF Number"><i class="fa fa-search"></i>
-    </div>
+    <form class="navbar-form" role="search" action="{% url 'search_results' %}" style="display:inline-block">
+      <div class="search">
+        <input type="text" placeholder="NHIF Number" name="nhif_number" style="width:100%; color:#ccc"><i class="fa fa-search" style="color:#ccc"></i>
+      </div>
+    </form>
     <ul class="categories">
       <li><i class="fa fa-home fa-fw" aria-hidden="true"></i><a href="/">Home</a>
       </li>

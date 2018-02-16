@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from .models import Patient, Doctor, NextOfKin, MedicalCover, AllergiesAndDirectives, Medicine, Treatment
 from .forms import UpdateProfileForm, NewPatientForm, NewNextOfKinForm, NewMedicineForm, MedicalCoverForm, AllergiesAndDirectivesForm, TreatmentForm
 from .email import send_medical_report_patient
+from django.http import Http404
+from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 @login_required(login_url='/accounts/login')
 def dashboard(request):
@@ -115,3 +117,19 @@ def diagnosis(request, nhif_number):
     email = patient.email
     send_medical_report_patient(name, email, treatment, doctor, patient)
     return render(request, 'diagnosis.html', {'doctor':doctor, 'patient':patient, 'treatment':treatment})
+
+def search_results(request):
+    if 'nhif_number' in request.GET and request.GET['nhif_number']:
+        current_user =request.user
+        doctor = Doctor.objects.get(user_id=current_user.id)
+        nhif_number = request.GET.get('nhif_number')
+        try:
+            patient = Patient.objects.get(NHIF_number=nhif_number)
+        except ObjectDoesNotExist:
+            raise Http404()
+        return render(request, 'search.html', {'patient':patient, 'doctor':doctor})
+
+def handler404(request):
+    current_user =request.user
+    doctor = Doctor.objects.get(user_id=current_user.id)
+    return render(request, '404.html', {'doctor':doctor})

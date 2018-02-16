@@ -1,7 +1,6 @@
 {% extends 'base.html'%}
 {% block content %}
 <div class="container">
-  {% for patient in patients %}
     <figure class="snip1515">
       <div class="profile-image"><img src="{{patient.profile_photo.url}}" alt="{{patient.name}}" /></div>
       <figcaption>
@@ -12,8 +11,6 @@
         </a>
       </figcaption>
     </figure>
-
-  {% endfor %}
 </div>
 
 <style media="screen">

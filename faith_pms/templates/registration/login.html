@@ -1,17 +1,12 @@
-{%extends "registration/base.html"%}
-{% load bootstrap3 %}
-{% block content %}
-<div class="container" style="margin-top:100px;position:fixed;background-image: url('https://www.endocrineweb.com/sites/default/files/imagecache/gallery-large/wysiwyg_imageupload/48/2016/04/14/19410768_M_0.jpg'); background-repeat:no-repeat; background-size:cover">
+{%extends "registration/base.html"%} {% load bootstrap3 %} {% block content %}
+<!-- <div class="container" style="margin-top:100px;margin-left:50px;position:fixed;background-image: url('https://www.endocrineweb.com/sites/default/files/imagecache/gallery-large/wysiwyg_imageupload/48/2016/04/14/19410768_M_0.jpg'); background-repeat:no-repeat; background-size:cover">
   <div class="row">
-    <!-- Empty div -->
-    <!-- <div class="col-md-4"></div> -->
-
-    <!-- empty div -->
+    <div class="col-md-4"></div>
     <div class="col-md-7">
 <div class="well">
-  <h1>Welcome to PMS</h1>
+  <h1>Welcome to PaMaSystem</h1>
   <a href="/accounts/register">
-    <input type="click" name="" value="Register" class="btn btn-primary btn-default">
+    <input type="click" name="" value="REGISTER" class="btn btn-primary btn-default" style="margin-left:100px">
   </a>
 </div>
     </div>
@@ -34,7 +29,13 @@
 
           <form  action="/accounts/login/" method="post">
             {% csrf_token %}
-            {% bootstrap_form form%}
+            {{form.username.label}}
+            {{form.username}}
+            {{form.username.errors}}
+
+            {{form.password.label}}
+            {{form.password}}
+            {{form.password.errors}}
             <a href="/profile">
               <div class="form-group">
                 <input type="submit" class="btn btn-primary btn-block" value="Login">
@@ -42,7 +43,7 @@
             </a>
 
 
-            <!-- <input type="hidden" name="next" value="{{next}}"> -->
+            <input type="hidden" name="next" value="{{next}}">
 
           </form>
         </div>
@@ -51,6 +52,295 @@
 
     </div>
   </div>
+</div> -->
+<div class="signup__container">
+  <div class="container__child signup__thumbnail">
+    <!-- <div class="thumbnail__logo">
+      <p class="logo__text" style="font-size:30px;font-family: 'Monoton', cursive;color: #ffc107">PaMaSystem</p>
+    </div> -->
+    <div class="thumbnail__content">
+      <h1 class="heading--primary">Welcome to PaMaSystem.</h1>
+      <h2 class="heading--secondary">Are you ready to join the elite?</h2>
+    </div>
+    <div class="signup__overlay"></div>
+  </div>
+  <div class="container__child signup__form">
+    <div class="login-page">
+      <div class="form" style="display:hidden">
+        <form class="login-form" method="post" action="/accounts/login/">
+          {% csrf_token %}
+          <label style="color:black">{{form.username.label}}</label>
+          {{form.username}}
+          <label style="color:black">{{form.password.label}}</label>
+          {{form.password}}
+          <a href="/">
+          <button>login</button>
+          </a>
+          <p class="message2">Not registered? <a href="/accounts/register/">Create an account</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
+<style media="screen">
+@import url("https://fonts.googleapis.com/css?family=Droid+Sans|Amaranth|Monoton");
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.form button:hover,.form button:active,.form button:focus {
+  background: #43A047;
+}
+ .message1 {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+ .message1 a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+.message2 {
+ margin: 15px 0 0;
+ color: #b3b3b3;
+ font-size: 12px;
+}
+.message2 a {
+ color: #4CAF50;
+ text-decoration: none;
+}
+.form .register-form {
+  display: none;
+}
+
+.container:before, .container:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.container .info {
+  margin: 50px auto;
+  text-align: center;
+}
+.container .info h1 {
+  margin: 0 0 15px;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 300;
+  color: #1a1a1a;
+}
+.container .info span {
+  color: #4d4d4d;
+  font-size: 12px;
+}
+.container .info span a {
+  color: #000000;
+  text-decoration: none;
+}
+.container .info span .fa {
+  color: #EF3B3A;
+}
+body {
+  background: #76b852; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+  background: -moz-linear-gradient(right, #76b852, #8DC26F);
+  background: -o-linear-gradient(right, #76b852, #8DC26F);
+  background: linear-gradient(to left, #76b852, #8DC26F);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+  .signup__container {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+    transform: translateY(-50%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:1000px;
+    height:500px;
+    border-radius:3px;
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, .25);
+    font-size: 30px;
+  }
+
+  .signup__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .76);
+    opacity: 0.5;
+  }
+
+  .container__child {
+    width: 50%;
+    height: 100%;
+    color: #fff;
+  }
+  .signup__thumbnail {
+    position: relative;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background: url('http://media.beam.usnews.com/8d/70/0554d0494a2c917dd0e6aceb69f0/140617-doctorpatient-stock.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .thumbnail__logo,
+  .thumbnail__content,
+  .thumbnail__links {
+    position: relative;
+    z-index: 2;
+  }
+
+  .thumbnail__logo {
+    align-self: flex-start;
+  }
+
+  .logo__shape {
+    fill: #fff;
+  }
+
+  .logo__text {
+    display: inline-block;
+    font-size: .8rem;
+    font-weight: 700;
+    vertical-align: bottom;
+  }
+
+  .thumbnail__content {
+    align-self: center;
+  }
+
+  h1,
+  h2 {
+    font-weight: 300;
+    color: rgba(255, 255, 255, 1);
+  }
+
+  .heading--secondary {
+    font-size: 1.414rem;
+  }
+
+  .thumbnail__links {
+    align-self: flex-end;
+    width: 100%;
+  }
+
+  .thumbnail__links a {
+    font-size: 1rem;
+    color: #fff;
+    &:focus,
+    &:hover {
+      color: rgba(255, 255, 255, .5);
+    }
+  }
+
+  .signup__form {
+    padding: 2.5rem;
+    background: #fafafa;
+  }
+
+  label {
+    font-size: .85rem;
+    text-transform: uppercase;
+    color: #ccc;
+  }
+
+
+  [type="text"] {
+    color: #111;
+  }
+
+  [type="password"] {
+    color: #111;
+  }
+
+  .btn--form {
+    padding: .5rem 2.5rem;
+    font-size: .95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    background: #111;
+    border-radius: 35px;
+    &:focus,
+    &:hover {
+      background: lighten(#111, 13%);
+    }
+  }
+
+  .signup__link {
+    font-size: 2rem;
+    font-weight: 600;
+    text-decoration: underline;
+    color: #999;
+    &:focus,
+    &:hover {
+      color: darken(#999, 13%);
+    }
+  }
+</style>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+$('.message2').click(function(event){
+  event.preventDefault()
+ $('.register-form').show(500);
+ $('.login-form  ').hide(100);
+});
+$('.message1').click(function(event){
+  event.preventDefault()
+ $('.register-form').hide(100);
+ $('.login-form  ').show(500);
+});
+</script> -->
 
 {% endblock %}

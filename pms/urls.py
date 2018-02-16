@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views
+from django.conf.urls import handler404, handler500
+from faith_pms import views as faith_pms_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -25,3 +27,6 @@ urlpatterns = [
     url(r'^tinymce/', include('tinymce.urls'))
 
 ]
+
+handler404 = 'faith_pms_views.handler404'
+# handler500 = faith_pms_views.error_500
