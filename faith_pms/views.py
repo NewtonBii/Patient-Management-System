@@ -12,7 +12,7 @@ from rest_framework.views import APIView
 #import UserInformation class from the models
 from .models import Doctor
 #import UserInformationSerializer class from the serializer module
-from .serializer import DoctorSerializer
+from .serializer import DoctorSerializer, PatientSerializer
 # Create your views here.
 @login_required(login_url='/accounts/login')
 def dashboard(request):
@@ -160,6 +160,6 @@ class PatientList(APIView):
         # query database to get all patient objects.
         all_patients = Patient.objects.all()
         # convert all patient objects to JSON objects
-        serializers = PatientSerializer(all_patients, many = True)
+        serializers = PatientSerializer(all_patients)
         #return the JSON objects for when an get request is made
         return Response(serializers.data)
