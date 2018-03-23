@@ -15,7 +15,8 @@ url(r'^patient/(\d+)', views.single_patient, name = 'singlePatient'),
 url(r'^treatment/(\d+)', views.treatment, name = 'newTreatment'),
 url(r'^treatment/diagnosis/(\d+)', views.diagnosis, name = 'diagnosis'),
 url(r'^results/', views.search_results, name = 'search_results'),
-url(r'^users/doctors/$', views.DoctorList.as_view())
+url(r'^api/users/doctors/$', views.DoctorList.as_view()),
+url(r'^api/users/patients/$', views.PatientList.as_view())
 ]
 
 handler404 = 'views.handler404'

@@ -152,3 +152,14 @@ class DoctorList(APIView):
         serializers = DoctorSerializer(all_doctors, many = True)
         #return the JSON objects for when an get request is made
         return Response(serializers.data)
+
+# Patient List that inherits the APIView class from rest_framework library
+class PatientList(APIView):
+    # get function to query database for all patient objects
+    def get(self, request, format = None):
+        # query database to get all patient objects.
+        all_patients = Patient.objects.all()
+        # convert all patient objects to JSON objects
+        serializers = PatientSerializer(all_patients, many = True)
+        #return the JSON objects for when an get request is made
+        return Response(serializers.data)
