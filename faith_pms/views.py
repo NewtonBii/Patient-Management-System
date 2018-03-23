@@ -5,6 +5,14 @@ from .forms import UpdateProfileForm, NewPatientForm, NewNextOfKinForm, NewMedic
 from .email import send_medical_report_patient
 from django.http import Http404
 from django.core.exceptions import ObjectDoesNotExist
+# import Response from the rest_framework response module. This will handle the response from the API requests
+from rest_framework.response import Response
+# import APIView that will act as a base class for the API view function
+from rest_framework.views import APIView
+#import UserInformation class from the models
+from .models import Doctor
+#import UserInformationSerializer class from the serializer module
+from .serializer import DoctorSerializer
 # Create your views here.
 @login_required(login_url='/accounts/login')
 def dashboard(request):
@@ -133,3 +141,14 @@ def handler404(request):
     current_user =request.user
     doctor = Doctor.objects.get(user_id=current_user.id)
     return render(request, '404.html', {'doctor':doctor})
+
+# Doctor List that inherits the APIView class from rest_framework library
+class DoctorList(APIView):
+    # get function to query database for all doctor objects
+    def get(self, request, format = None):
+        # query database to get all doctor objects.
+        all_doctors = Doctor.objects.all()
+        # convert all doctor objects to JSON objects
+        serializers = DoctorSerializer(all_doctors, many = True)
+        #return the JSON objects for when an get request is made
+        return Response(serializers.data)

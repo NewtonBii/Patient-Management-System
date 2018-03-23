@@ -5,7 +5,7 @@ from rest_framework import serializers
 from .models import Doctor
 
 # create a UserInformationSerializer class that will inhertit form the ModelSerializer class
-class UserSerializer(serializers.ModelSerializer):
+class DoctorSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
+        model = Doctor
         fields = ('title', 'description', 'name', 'phone_number', 'license_number', 'specialty', 'hospital', 'profile_photo', 'user', 'email')
